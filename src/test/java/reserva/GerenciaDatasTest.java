@@ -1,9 +1,11 @@
-package org.gradle;
+package reserva;
 
 import java.util.Date;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import org.junit.Test;
+
+import reserva.GerenciaDatas;
 
 public class GerenciaDatasTest {
 	

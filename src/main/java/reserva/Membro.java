@@ -1,4 +1,4 @@
-package org.gradle;
+package reserva;
 
 public enum Membro {
 	

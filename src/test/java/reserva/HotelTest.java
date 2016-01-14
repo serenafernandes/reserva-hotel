@@ -1,12 +1,12 @@
-package org.gradle;
+package reserva;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import reserva.Hotel;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-
-import org.gradle.Hotel;
 
 
 public class HotelTest {
