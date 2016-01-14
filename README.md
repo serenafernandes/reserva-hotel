@@ -9,7 +9,7 @@ Esta aplicação contempla a solução do problema Reserva de Hotel:
 
 ### Instalação do ambiente
 
-1- O projeto utiliza java 1.7, portanto é precido o download do [jdk7](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk7-downloads-1880260.html) ou superior.
+1- O projeto utiliza java 1.7, portanto é preciso o download do [jdk7](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk7-downloads-1880260.html) ou superior.
 
 Adicione o diretório do java nas suas variáveis de ambiente
 
