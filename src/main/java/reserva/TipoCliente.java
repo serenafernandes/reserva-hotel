@@ -1,6 +1,6 @@
 package reserva;
 
-public enum Membro {
+public enum TipoCliente {
 	
 	Regular, Vip;
 

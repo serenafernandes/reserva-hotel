@@ -16,10 +16,12 @@ import reserva.Hotel;
 public class Main {
 
 	public static void main(String[] args) {
-		String tipoCliente = entrada("Em qual perfil de cliente você se encaixa? (regular/rewards)");
+		String inputTipoCliente = entrada("Em qual perfil de cliente você se encaixa? (Regular/Vip)");
 		String inputDataInicio = entrada("Quando você iniciará a estadia? (DD/MM/YYYY)");
 		String inputDataFim = entrada("Até quando pretende ficar? (DD/MM/YYYY)");
-
+		
+		TipoCliente tipoCliente = TipoCliente.valueOf(inputTipoCliente);
+				
 		GerenciadorDeDatas gerenciaDatas = new GerenciadorDeDatas();
 		Date dataInicio = gerenciaDatas.toDate(inputDataInicio);
 		Date dataFim = gerenciaDatas.toDate(inputDataFim);
@@ -44,51 +46,6 @@ public class Main {
 			return s;
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		return null;
-	}
-
-	private static String getHotelBaratoNome(String tipoCliente, Date initialDate, Date finalDate,
-			ArrayList<Hotel> hoteis) {
-		ArrayList<Date> datas = (ArrayList<Date>) getPeriodo(initialDate, finalDate);
-		ArrayList<Integer> precos = new ArrayList<Integer>();
-		int menorPreco = 99999;
-		String hotelBarato = "";
-
-		for (Hotel hotel : hoteis) {
-			int sum = 0;
-			for (Date date : datas) {
-				if (tipoCliente.equals("regular")) {
-					if (isWeekend(date)) {
-						sum += hotel.getFimSemanaRegular();
-					} else {
-						sum += hotel.getDiaUtilRegular();
-					}
-				} else if (tipoCliente.equals("rewards")) {
-					if (isWeekend(date)) {
-						sum += hotel.getFimSemanaVip();
-					} else {
-						sum += hotel.getDiaUtilVip();
-					}
-				}
-			}
-			if (sum < menorPreco) {
-				menorPreco = sum;
-				hotelBarato = hotel.getNome();
-			} else if (sum == menorPreco) {
-				if (hotel.getClassificacao() > getHotelByName(hotelBarato, hoteis).getClassificacao()) {
-					hotelBarato = hotel.getNome();
-				}
-			}
-		}
-		return hotelBarato;
-	}
-
-	private static Hotel getHotelByName(String name, ArrayList<Hotel> hoteis) {
-		for (Hotel hotel : hoteis) {
-			if (hotel.getNome().equals(name)) {
-				return hotel;
-			}
 		}
 		return null;
 	}
