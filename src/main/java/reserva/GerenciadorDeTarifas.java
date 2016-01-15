@@ -1,5 +1,8 @@
 package reserva;
 
+import static reserva.TipoCliente.Regular;
+import static reserva.TipoCliente.Vip;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,58 +10,59 @@ import java.util.List;
 public class GerenciadorDeTarifas {
 
 	public Tarifa getMelhorTarifa(TipoCliente tipoCliente, List<Date> periodo, List<Hotel> hoteis) {
-		// TODO Auto-generated method stub
-		return new Tarifa();
+
+		List<Tarifa> listaDeTarifas = new ArrayList<Tarifa>();
+
+		for (Hotel hotel : hoteis) {
+			Tarifa tarifa = calculaTarifaDoHotel(tipoCliente, periodo, hotel);
+			listaDeTarifas.add(tarifa);
+		}
+
+		Tarifa menorTarifa = calculaMenorTarifa(listaDeTarifas);
+
+		return menorTarifa;
 	}
 
-	private String getHotelBaratoNome(String tipoCliente, Date initialDate, Date finalDate,
-			ArrayList<Hotel> hoteis) {
+	private Tarifa calculaMenorTarifa(List<Tarifa> listaDeTarifas) {
+
+		Tarifa menorTarifa = null;
+
+		for (Tarifa tarifa : listaDeTarifas) {
+			if (menorTarifa == null || tarifa.getPreco() < menorTarifa.getPreco()) {
+				menorTarifa = tarifa;
+			} else if (tarifa.getPreco() == menorTarifa.getPreco()
+					&& tarifa.getHotel().getClassificacao() > menorTarifa.getHotel().getClassificacao()) {
+				menorTarifa = tarifa;
+			}
+		}
+
+		return menorTarifa;
+	}
+
+	private Tarifa calculaTarifaDoHotel(TipoCliente tipoCliente, List<Date> periodo, Hotel hotel) {
 
 		GerenciadorDeDatas gerenciadorDeDatas = new GerenciadorDeDatas();
-		
-		
-		ArrayList<Date> datas = (ArrayList<Date>) gerenciadorDeDatas.getPeriodo(initialDate, finalDate);
-		ArrayList<Integer> precos = new ArrayList<Integer>();
-		int menorPreco = 99999;
-		String hotelBarato = "";
 
-		for (Hotel hotel : hoteis) {
-			int sum = 0;
-			for (Date date : datas) {
-				if (tipoCliente.equals("regular")) {
-					if (gerenciadorDeDatas.isFimDeSemana(date)) {
-						sum += hotel.getFimSemanaRegular();
-					} else {
-						sum += hotel.getDiaUtilRegular();
-					}
-				} else if (tipoCliente.equals("rewards")) {
-					if (gerenciadorDeDatas.isFimDeSemana(date)) {
-						sum += hotel.getFimSemanaVip();
-					} else {
-						sum += hotel.getDiaUtilVip();
-					}
+		Double preco = 0d;
+		for (Date data : periodo) {
+			if (tipoCliente == Regular) {
+				if (gerenciadorDeDatas.isFimDeSemana(data)) {
+					preco += hotel.getFimSemanaRegular();
+				} else {
+					preco += hotel.getDiaUtilRegular();
 				}
-			}
-			if (sum < menorPreco) {
-				menorPreco = sum;
-				hotelBarato = hotel.getNome();
-			} else if (sum == menorPreco) {
-				if (hotel.getClassificacao() > getHotelByName(hotelBarato, hoteis).getClassificacao()) {
-					hotelBarato = hotel.getNome();
+			} else if (tipoCliente == Vip) {
+				if (gerenciadorDeDatas.isFimDeSemana(data)) {
+					preco += hotel.getFimSemanaVip();
+				} else {
+					preco += hotel.getDiaUtilVip();
 				}
 			}
 		}
-		return hotelBarato;
+
+		Tarifa tarifa = new Tarifa(hotel, preco);
+
+		return tarifa;
 	}
 
-	private Hotel getHotelByName(String name, ArrayList<Hotel> hoteis) {
-		for (Hotel hotel : hoteis) {
-			if (hotel.getNome().equals(name)) {
-				return hotel;
-			}
-		}
-		return null;
-	}
-
-	
 }

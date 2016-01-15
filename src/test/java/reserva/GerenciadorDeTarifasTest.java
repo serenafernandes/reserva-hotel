@@ -1,5 +1,6 @@
 package reserva;
 
+import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.assertThat;
 
@@ -16,26 +17,41 @@ public class GerenciadorDeTarifasTest {
 
 	GerenciadorDeTarifas gerenciadorDeTarifas;
 	List<Hotel> mockHoteis;
-	List<Date> mockPeriodo;
 
 	@Before
-	public void setup() throws ParseException {
-		gerenciadorDeTarifas = new GerenciadorDeTarifas();
+	public void setUpBeforeClass() throws Exception {
 		mockHoteis = new ArrayList<Hotel>();
 		mockHoteis.add(new Hotel("The Carlyle", 3, 110, 80, 90, 80));
 		mockHoteis.add(new Hotel("The Plaza", 4, 160.00, 110.00, 60.00, 50.00));
 		mockHoteis.add(new Hotel("Royal Hotel", 5, 220.00, 100.00, 150.00, 40.00));
+	}
 
-		mockPeriodo = new ArrayList<Date>();
-		
-		mockPeriodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("01/01/2016"));
-		mockPeriodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("02/01/2016"));
-		mockPeriodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("03/01/2016"));
+	@Before
+	public void setup() {
+		gerenciadorDeTarifas = new GerenciadorDeTarifas();
 	}
 
 	@Test
-	public void deveRetornarUmaTarifa() {
-		assertThat(gerenciadorDeTarifas.getMelhorTarifa(TipoCliente.Vip, mockPeriodo, mockHoteis), instanceOf(Tarifa.class));
+	public void deveRetornarUmaTarifa() throws ParseException {
+
+		List<Date> periodo = new ArrayList<Date>();
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("16/03/2015"));
+
+		assertThat(gerenciadorDeTarifas.getMelhorTarifa(TipoCliente.Vip, periodo, mockHoteis),
+				instanceOf(Tarifa.class));
+	}
+
+	@Test
+	public void deveRetornarCarlyleA330Reais() throws ParseException {
+
+		List<Date> periodo = new ArrayList<Date>();
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("16/03/2015"));
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("17/03/2015"));
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("18/03/2015"));
+
+		Tarifa tarifaEsperada = new Tarifa(mockHoteis.get(0), 330d);
+		
+		assertThat(gerenciadorDeTarifas.getMelhorTarifa(TipoCliente.Regular, periodo, mockHoteis), is(tarifaEsperada));
 	}
 
 }
