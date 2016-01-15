@@ -20,7 +20,7 @@ public class Main {
 		String inputDataInicio = entrada("Quando você iniciará a estadia? (DD/MM/YYYY)");
 		String inputDataFim = entrada("Até quando pretende ficar? (DD/MM/YYYY)");
 
-		GerenciaDatas gerenciaDatas = new GerenciaDatas();
+		GerenciadorDeDatas gerenciaDatas = new GerenciadorDeDatas();
 		Date dataInicio = gerenciaDatas.toDate(inputDataInicio);
 		Date dataFim = gerenciaDatas.toDate(inputDataFim);
 		List<Date> periodo = gerenciaDatas.getPeriodo(dataInicio, dataFim);

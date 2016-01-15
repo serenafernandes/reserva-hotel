@@ -7,11 +7,11 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import reserva.GerenciaDatas;
+import reserva.GerenciadorDeDatas;
 
 public class GerenciaDatasTest {
 	
-	GerenciaDatas datas = new GerenciaDatas(); 
+	GerenciadorDeDatas datas = new GerenciadorDeDatas(); 
 	
 	@Test
 	public void deveRetornarFimDeSemana() throws Exception {

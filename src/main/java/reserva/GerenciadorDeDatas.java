@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
-public class GerenciaDatas {
+public class GerenciadorDeDatas {
 	
 	public Date toDate(String dateString) {
         try {
