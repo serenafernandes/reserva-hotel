@@ -44,7 +44,7 @@ gradle test
 ```
 ###Rodar a aplicação
 
-Antes de rodar a aplicação, tenha certeza que já compilou o projeto. Entre na pasta "build/libs" pois é onde o Gradle salva o jar do projeto digitando o seguinte comando:
+Antes de rodar a aplicação, tenha certeza que já compilou o projeto. Entre no diretório "build/libs" pois é onde o Gradle salva o jar do projeto. Digite o comando:
 
 ```bash
 cd build/libs
@@ -55,7 +55,12 @@ Então execute o arquivo .jar, com o seguinte comando:
 java -jar reserva-hotel-1.0.jar
 ```
 
-###Parâmetros de entrada
+O projeto também pode ser executado por:
+```bash
+gradle run
+```
+
+####Exemplos de entrada
 ```bash
 1. Cliente: Regular
 Período de estadia: 16Mar2015(seg), 17Mar2015(ter), 18Mar2015(qua)
@@ -66,7 +71,7 @@ Período de estadia: 20Mar2015(sex), 21Mar2015(sab), 22Mar2015(dom)
 3. Cliente: Vip
 Período de estadia: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab)
 ```
-###Saída esperada
+####Saída esperada
 ```bash
 1. The Carlyle: R$330
 2. The Plaza: R$280
