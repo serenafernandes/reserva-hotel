@@ -7,13 +7,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Locale;
 
 public class GerenciadorDeDatas {
 	
 	public Date toDate(String dateString) {
         try {
-            Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(dateString);
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateString);
             return date;
         } catch (ParseException e) {
             e.printStackTrace();
