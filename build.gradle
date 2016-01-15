@@ -3,15 +3,12 @@ apply plugin: 'eclipse'
 apply plugin: 'application'
 
 
-mainClassName = "src.main.java.reserva.Main"
-sourceCompatibility = 1.5
-version = '1.0'
+mainClassName = "reserva.Main"
+sourceCompatibility = 1.7
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version,
-                   'Main-Class': 'reserva.Main'
+        attributes 'Main-Class': 'reserva.Main'
     }
 }
 
@@ -28,10 +25,6 @@ test {
     systemProperties 'property': 'value'
 }
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
+run{
+    standardInput = System.in
 }
