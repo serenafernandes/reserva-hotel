@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import reserva.GerenciadorDeDatas;
 
-public class GerenciaDatasTest {
+public class GerenciadorDeDatasTest {
 	
 	GerenciadorDeDatas datas = new GerenciadorDeDatas(); 
 	
