@@ -68,6 +68,11 @@ public class Hotel {
 	}
 
 	@Override
+	public String toString() {
+		return this.getNome();
+	}
+	
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

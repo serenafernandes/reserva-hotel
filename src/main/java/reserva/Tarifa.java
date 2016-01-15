@@ -25,6 +25,11 @@ public class Tarifa {
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
+	
+	@Override
+	public String toString() {
+		return this.getHotel().getNome() + ", preço: " + this.getPreco();
+	}
 
 	@Override
 	public int hashCode() {
