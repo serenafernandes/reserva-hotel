@@ -21,9 +21,9 @@ public class GerenciadorDeTarifasTest {
 	@Before
 	public void setUpBeforeClass() throws Exception {
 		mockHoteis = new ArrayList<Hotel>();
-		mockHoteis.add(new Hotel("The Carlyle", 3, 110, 80, 90, 80));
-		mockHoteis.add(new Hotel("The Plaza", 4, 160.00, 110.00, 60.00, 50.00));
-		mockHoteis.add(new Hotel("Royal Hotel", 5, 220.00, 100.00, 150.00, 40.00));
+		mockHoteis.add(new Hotel("The Carlyle", 3, 110d, 80d, 90d, 80d));
+		mockHoteis.add(new Hotel("The Plaza", 4, 160d, 110d, 60d, 50d));
+		mockHoteis.add(new Hotel("Royal Hotel", 5, 220d, 100d, 150d, 40d));
 	}
 
 	@Before
