@@ -28,7 +28,7 @@ public class Main {
 		List<Date> periodo = gerenciaDatas.getPeriodo(dataInicio, dataFim);
 
 		ArrayList<Hotel> hoteis = new ArrayList<Hotel>();
-		hoteis.add(new Hotel("The Carlyle", 3, 110, 80, 90, 80));
+		hoteis.add(new Hotel("The Carlyle", 3, 110.00, 80.00, 90.00, 80.00));
 		hoteis.add(new Hotel("The Plaza", 4, 160.00, 110.00, 60.00, 50.00));
 		hoteis.add(new Hotel("Royal Hotel", 5, 220.00, 100.00, 150.00, 40.00));
 
