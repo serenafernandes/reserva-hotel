@@ -24,7 +24,9 @@ public class GerenciadorDeDatas {
 		Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        return dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY;
+        if(dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY)
+        	return true;
+        return false;
     }
 	
 	public List<Date> getPeriodo(Date dataInicio, Date dataFim) {
