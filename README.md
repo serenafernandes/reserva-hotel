@@ -60,20 +60,16 @@ O projeto também pode ser executado por:
 gradle run
 ```
 
-####Exemplos de entrada
-```bash
-1. Cliente: Regular
-Período de estadia: 16Mar2015(seg), 17Mar2015(ter), 18Mar2015(qua)
+####Exemplos
 
-2. Cliente: Regular
-Período de estadia: 20Mar2015(sex), 21Mar2015(sab), 22Mar2015(dom)
+	1. Cliente: Regular
+	Período de estadia: 16Mar2015(seg), 17Mar2015(ter), 18Mar2015(qua)
+	Saída esperada: The Carlyle: R$330
+	
+	2. Cliente: Regular
+	Período de estadia: 20Mar2015(sex), 21Mar2015(sab), 22Mar2015(dom)
+	Saída esperada: The Plaza: R$280
 
-3. Cliente: Vip
-Período de estadia: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab)
-```
-####Saída esperada
-```bash
-1. The Carlyle: R$330
-2. The Plaza: R$280
-3. Royal Hotel: R$240
-```
+	3. Cliente: Vip
+	Período de estadia: 26Mar2015(qui), 27Mar2015(sex), 28Mar2015(sab)
+	Saída esperada: Royal Hotel: R$240
