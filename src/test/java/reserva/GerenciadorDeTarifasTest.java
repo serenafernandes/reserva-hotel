@@ -77,7 +77,7 @@ public class GerenciadorDeTarifasTest {
 
 		Tarifa tarifaEsperada = new Tarifa(mockHoteis.get(2), 240d);
 
-		assertThat(gerenciadorDeTarifas.getMelhorTarifa(TipoCliente.Regular, periodo, mockHoteis), is(tarifaEsperada));
+		assertThat(gerenciadorDeTarifas.getMelhorTarifa(TipoCliente.Vip, periodo, mockHoteis), is(tarifaEsperada));
 	}
 
 }

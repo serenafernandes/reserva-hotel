@@ -30,8 +30,7 @@ public class GerenciadorDeTarifas {
 		for (Tarifa tarifa : listaDeTarifas) {
 			if (menorTarifa == null || tarifa.getPreco() < menorTarifa.getPreco()) {
 				menorTarifa = tarifa;
-			} else if (tarifa.getPreco() == menorTarifa.getPreco()
-					&& tarifa.getHotel().getClassificacao() > menorTarifa.getHotel().getClassificacao()) {
+			} else if (tarifa.getPreco().equals(menorTarifa.getPreco()) && tarifa.getHotel().getClassificacao() > menorTarifa.getHotel().getClassificacao()) {
 				menorTarifa = tarifa;
 			}
 		}
@@ -42,7 +41,6 @@ public class GerenciadorDeTarifas {
 	private Tarifa calculaTarifaDoHotel(TipoCliente tipoCliente, List<Date> periodo, Hotel hotel) {
 
 		GerenciadorDeDatas gerenciadorDeDatas = new GerenciadorDeDatas();
-
 		Double preco = 0d;
 		for (Date data : periodo) {
 			if (tipoCliente == Regular) {
@@ -64,5 +62,14 @@ public class GerenciadorDeTarifas {
 
 		return tarifa;
 	}
+	
+	private static Hotel getHotelPeloNome(String nome, ArrayList<Hotel> hoteis) {
+        for (Hotel hotel: hoteis) {
+            if (hotel.getNome().equals(nome)) {
+                return hotel;
+            }
+        }
+        return null;
+    }
 
 }
