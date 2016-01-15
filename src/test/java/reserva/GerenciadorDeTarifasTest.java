@@ -50,7 +50,33 @@ public class GerenciadorDeTarifasTest {
 		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("18/03/2015"));
 
 		Tarifa tarifaEsperada = new Tarifa(mockHoteis.get(0), 330d);
-		
+
+		assertThat(gerenciadorDeTarifas.getMelhorTarifa(TipoCliente.Regular, periodo, mockHoteis), is(tarifaEsperada));
+	}
+
+	@Test
+	public void deveRetornarThePlazaA280Reais() throws ParseException {
+
+		List<Date> periodo = new ArrayList<Date>();
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("20/03/2015"));
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("21/03/2015"));
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("22/03/2015"));
+
+		Tarifa tarifaEsperada = new Tarifa(mockHoteis.get(1), 280d);
+
+		assertThat(gerenciadorDeTarifas.getMelhorTarifa(TipoCliente.Regular, periodo, mockHoteis), is(tarifaEsperada));
+	}
+
+	@Test
+	public void deveRetornarRoyalHotelA240Reais() throws ParseException {
+
+		List<Date> periodo = new ArrayList<Date>();
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("26/03/2015"));
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("27/03/2015"));
+		periodo.add(new SimpleDateFormat("dd/MM/yyyy").parse("28/03/2015"));
+
+		Tarifa tarifaEsperada = new Tarifa(mockHoteis.get(2), 240d);
+
 		assertThat(gerenciadorDeTarifas.getMelhorTarifa(TipoCliente.Regular, periodo, mockHoteis), is(tarifaEsperada));
 	}
 
