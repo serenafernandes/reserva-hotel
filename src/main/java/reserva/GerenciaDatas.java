@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class GerenciaDatas {
 	
-	public static Date toDate(String dateString) {
+	public Date toDate(String dateString) {
         try {
             Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(dateString);
             return date;
@@ -28,7 +28,7 @@ public class GerenciaDatas {
         return dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY;
     }
 	
-	public static List<Date> getPeriodo(Date dataInicio, Date dataFim) {
+	public List<Date> getPeriodo(Date dataInicio, Date dataFim) {
         List<Date> datas = new ArrayList<Date>();
         Calendar calendar = new GregorianCalendar();
         calendar.setTime(dataInicio);
