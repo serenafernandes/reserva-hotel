@@ -21,23 +21,19 @@ public class Main {
 		String inputDataFim = entrada("Até quando pretende ficar? (DD/MM/YYYY)");
 
 		GerenciaDatas gerenciaDatas = new GerenciaDatas();
-		
 		Date dataInicio = gerenciaDatas.toDate(inputDataInicio);
 		Date dataFim = gerenciaDatas.toDate(inputDataFim);
 		List<Date> periodo = gerenciaDatas.getPeriodo(dataInicio, dataFim);
 
 		ArrayList<Hotel> hoteis = new ArrayList<Hotel>();
-
 		hoteis.add(new Hotel("The Carlyle", 3, 110, 80, 90, 80));
 		hoteis.add(new Hotel("The Plaza", 4, 160.00, 110.00, 60.00, 50.00));
 		hoteis.add(new Hotel("Royal Hotel", 5, 220.00, 100.00, 150.00, 40.00));
 
-		
-		GerenciaTarifas gerenciaTarifas = new GerenciaTarifas();
-		
-		String precoTarifa = gerenciaTarifas.getMelhorTarifa(tipoCliente, periodo, hoteis);
-		
-		System.out.println("O hotel mais barato para este período é " + hotelBarato);
+		GerenciadorDeTarifas gerenciaTarifas = new GerenciadorDeTarifas();
+		Tarifa melhorTarifa = gerenciaTarifas.getMelhorTarifa(tipoCliente, periodo, hoteis);
+		System.out.println("O hotel mais barato para este período é " + melhorTarifa.getHotel());
+		System.out.println("O preço fica em " + melhorTarifa.getPreco());
 	}
 	
 	private static String entrada(String info) {
@@ -95,26 +91,6 @@ public class Main {
 			}
 		}
 		return null;
-	}
-
-	private static boolean isWeekend(Date date) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(date);
-		int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-		return dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY;
-	}
-
-	public static List<Date> getPeriodo(Date startdate, Date enddate) {
-		List<Date> datas = new ArrayList<Date>();
-		Calendar calendar = new GregorianCalendar();
-		calendar.setTime(startdate);
-
-		while (calendar.getTime().before(enddate) || calendar.getTime().equals(enddate)) {
-			Date result = calendar.getTime();
-			datas.add(result);
-			calendar.add(Calendar.DATE, 1);
-		}
-		return datas;
 	}
 
 }

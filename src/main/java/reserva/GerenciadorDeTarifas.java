@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class GerenciaTarifas {
+public class GerenciadorDeTarifas {
 
-	public String getMelhorTarifa(String tipoCliente, List<Date> periodo, ArrayList<Hotel> hoteis) {
+	public Tarifa getMelhorTarifa(String tipoCliente, List<Date> periodo, ArrayList<Hotel> hoteis) {
 		// TODO Auto-generated method stub
 		return null;
 	}
