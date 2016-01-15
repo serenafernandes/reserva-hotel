@@ -1,41 +1,31 @@
 package reserva;
 
 public class Hotel {
-	
 
-    private String nome;
-    private int classificacao;
-    private double diaUtilRegular;
-    private double diaUtilVip;
-    private double fimSemanaRegular;
-    private double fimSemanaVip;
+	private String nome;
+	private int classificacao;
+	private double diaUtilRegular;
+	private double diaUtilVip;
+	private double fimSemanaRegular;
+	private double fimSemanaVip;
 
-    public Hotel(String nome, int classificacao, double diaUtilRegular, double diaUtilVip, double fimSemanaRegular, double fimSemanaVip) {
-        this.nome = nome;
-        this.classificacao = classificacao;
-        this.diaUtilRegular = diaUtilRegular;
-        this.diaUtilVip = diaUtilVip;
-        this.fimSemanaRegular = fimSemanaRegular;
-        this.fimSemanaVip = fimSemanaVip;
-    }
-
-	public Hotel constroiHotel(Hotel hotel){
-		Hotel hotelCompleto;
-		if(hotel.getNome().equals("carlyle")){
-			return hotelCompleto = new Hotel("The Carlyle", 3, 110.00, 80.00, 90.00, 80.00);
-		}else if(hotel.getNome().equals("plaza")){
-			return hotelCompleto = new Hotel("The Plaza", 4, 160.00, 110.00, 60.00, 50.00);
-		}else
-			return hotelCompleto = new Hotel("Royal Hotel", 5, 220.00, 100.00, 150.00, 40.00);
+	public Hotel(String nome, int classificacao, double diaUtilRegular, double diaUtilVip, double fimSemanaRegular,
+			double fimSemanaVip) {
+		this.nome = nome;
+		this.classificacao = classificacao;
+		this.diaUtilRegular = diaUtilRegular;
+		this.diaUtilVip = diaUtilVip;
+		this.fimSemanaRegular = fimSemanaRegular;
+		this.fimSemanaVip = fimSemanaVip;
 	}
 
 	public String getNome() {
-        return nome;
-    }
+		return nome;
+	}
 
-    public int getClassificacao() {
-        return classificacao;
-    }
+	public int getClassificacao() {
+		return classificacao;
+	}
 
 	public double getDiaUtilRegular() {
 		return diaUtilRegular;
@@ -52,7 +42,7 @@ public class Hotel {
 	public double getFimSemanaVip() {
 		return fimSemanaVip;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
