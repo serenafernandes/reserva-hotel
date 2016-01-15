@@ -1,12 +1,17 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'application'
 
+
+mainClassName = "src.main.java.reserva.Main"
 sourceCompatibility = 1.5
 version = '1.0'
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
+                   'Implementation-Version': version,
+                   'Main-Class': 'reserva.Main'
     }
 }
 
